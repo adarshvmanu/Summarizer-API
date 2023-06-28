@@ -14,7 +14,6 @@ def summarize_text():
     result = summarizer(text, max_length=summary_size, min_length=summary_size // 2, do_sample=False)  
     summary = result[0]['summary_text']
 
-
     sentences = re.split(r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<=\.|\?)\s', summary)
     summary = '\n'.join(['• ' + sentence.capitalize() for sentence in sentences])
     return jsonify({'summary': summary })
